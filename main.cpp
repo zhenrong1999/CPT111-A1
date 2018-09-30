@@ -1,28 +1,19 @@
 #include <iostream>
-#include <cmath>
-#include <cstdlib>
 #include <ctime>
-#include <iomanip>
-#include <chrono>
 
-#include <string>
 using namespace std;
-using std::chrono::system_clock;
+
 int main()
 {
-    char aas;
+    time_t rawtime;
+    struct tm * timeinfo;
+    char buffer [80];
 
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
 
-            time_t tt = system_clock::to_time_t (system_clock::now());
-            struct tm * ptm = localtime(&tt);
-            cout << "Now (local time): " << put_time(ptm,"%c") << '\n';
-
-            cout << aas;
-
-
-
-
-
+    strftime (buffer,80,"Now it's %I:%M%p. %x",timeinfo );
+    puts (buffer);
 
     return 0;
 }
