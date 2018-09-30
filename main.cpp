@@ -25,7 +25,7 @@ int main()
             puts (buffer);
             puts(trying);
             x++;
-            system
+
             _sleep(1000);
     }
     return 0;
