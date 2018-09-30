@@ -2,12 +2,15 @@
 #include <ctime>
 #include <chrono>
 #include <stdlib.h>
+#include <thread>
 
 
 using namespace std;
+bool stop = false;
+void loop() {
 
-int main()
-{
+
+
     time_t rawtime;
     struct tm * timeinfo;
     char buffer [80];
@@ -15,8 +18,7 @@ int main()
     int x=0;
 
 
-
-    while(x<=9)
+    while(!stop)
     {
             time (&rawtime);
             timeinfo = localtime (&rawtime);
@@ -25,9 +27,25 @@ int main()
             puts (buffer);
             puts(trying);
             x++;
-
-            _sleep(1000);
+            _sleep(500);
+            system ("CLS");
     }
+
+}
+
+int main()
+{
+
+    thread t(loop); // Separate thread for loop.
+    // This actually starts a thread.
+    // Wait for input character (this will suspend the main thread, but the loop
+    // thread will keep running).
+    cin.get();
+    // Set the atomic boolean to true. The loop thread will exit from
+    // loop and terminate.
+    stop = true;
+
+
     return 0;
 }
 
