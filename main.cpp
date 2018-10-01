@@ -34,9 +34,7 @@ void loop() {
 
 int main()
 {
-    int close=0;
-    while (close==0)
-    {
+
     thread t(loop); // Separate thread for loop.
     // This actually starts a thread.
     // Wait for input character (this will suspend the main thread, but the loop
@@ -79,7 +77,7 @@ int main()
         }
 
         if (no_menu==1) //Program for depositing
-            {
+         {
                 double keyin;
                 cout <<"Deposit for eWallet: RM ";
                 cin >> keyin;
@@ -93,16 +91,9 @@ int main()
 
                 }
                     else {eWallet=eWallet+keyin;}
-            }
-
-            }
-
-
-
-
-
+          }
+         }
 }
 
 
 
-}
