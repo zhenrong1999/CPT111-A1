@@ -34,8 +34,9 @@ void loop() {
 
 int main()
 {
-
-
+    int close=0;
+    while (close==0)
+    {
     thread t(loop); // Separate thread for loop.
     // This actually starts a thread.
     // Wait for input character (this will suspend the main thread, but the loop
@@ -69,6 +70,13 @@ int main()
             cout << "You have crash the system. Please restart the system....................";
             return 0;
         }
+        if(no_menu ==7)
+        {
+            cout << "Thank you for using the Intelligient Vending Machine.\n";
+            cout << "See you in the next transaction.\n";
+            _sleep(2000);
+            stop=false;
+        }
 
         if (no_menu==1) //Program for depositing
             {
@@ -77,22 +85,24 @@ int main()
                 cin >> keyin;
                 if (keyin+eWallet>10000) //Limit for the eWallet
                 {
-                    _sleep(100);
+
                     cout << "Warning!!!";
                     cout << "You have deposit too much or your wallets full.\n";
+                    _sleep(1500);
                     cin.get();
 
                 }
                     else {eWallet=eWallet+keyin;}
             }
 
-    }
+            }
 
 
 
 
 
-    return 0;
 }
 
 
+
+}
