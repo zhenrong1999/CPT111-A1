@@ -1,10 +1,9 @@
 #include <iostream>
 #include <ctime>
 #include <chrono>
-
+#include <stdlib.h>
 #include <thread>
 #include <string>
-#include <cstdlib>
 
 
 using namespace std;
@@ -97,8 +96,6 @@ int main()
                 string item_name;
                 getline(cin, item_name);
             }
-        if (no_menu==2 & eWallet<0 )
-                {cout << "Please deposit more in order to buy more great staff. (Press 1)";cin.ignore(numeric_limits<streamsize>::max(), '\n');cin.get(); }
 
         if (no_menu==2 & eWallet==0 )
             {cout<<"Please deposit first in order to proceed! (Press 1) \n";cin.ignore(numeric_limits<streamsize>::max(), '\n');cin.get();}
