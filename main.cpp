@@ -88,20 +88,25 @@ int main()
         if (no_menu==2 & eWallet>0 )
             {
                 cout << " Here are the HOT item that are in sale right now. \n";
-                cout << "Apple Macbook Pro\n";
+                cout << "-Apple Macbook Pro\n";
                 cout << "-Seagate 250G SSD\n";
                 cout << "-MSI Gaming Laptop\n";
                 cout <<"-Cosiaer Gaming Mouse\n";
                 cout <<"-Dell XPS 15\n";
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                string item_name;
-                getline(cin, item_name);
+                string item=;
+                getline(cin, item);
             }
-        if (no_menu==2 & eWallet<0 )
+        if (no_menu==2 && eWallet<0 )
                 {cout << "Please deposit more in order to buy more great staff. (Press 1)";cin.ignore(numeric_limits<streamsize>::max(), '\n');cin.get(); }
 
-        if (no_menu==2 & eWallet==0 )
+        if (no_menu==2 && eWallet==0 )
             {cout<<"Please deposit first in order to proceed! (Press 1) \n";cin.ignore(numeric_limits<streamsize>::max(), '\n');cin.get();}
+
+        if (no_menu==3 )
+            {
+                cout <<  item_name;
+            }
 
         if (no_menu==1) //Program for depositing
          {

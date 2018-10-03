@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1538543311 source:c:\users\user\onedrive - universiti sains malaysia\programming\intelligent vending machine\main.cpp
+1538543965 source:c:\users\user\onedrive - universiti sains malaysia\programming\intelligent vending machine\main.cpp
 	<iostream>
 	<ctime>
 	<chrono>
-	<stdlib.h>
 	<thread>
 	<string>
+	<cstdlib>
 
