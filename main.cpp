@@ -17,15 +17,17 @@ int main()
     char buffer [80];
     int no_menu=1;
     double eWallet=0.00;
-    double price;
+    double price=0;
     string item;
     bool entered = false;
     bool from_menu2 = false;
     string buff_acc;
     int buff_pass;
+    int pass;
     string buff_passS;
-    double n_balance;
-    bool main_pass = true;
+    double n_balance=0;
+    double renminbi = 1.66;
+    double  yen=27.535;
 
 
         time (&rawtime);
@@ -144,7 +146,7 @@ while (1==1)
                     n_balance = eWallet - price; // calculate balance
                     if (n_balance<0){cout<<"Please kindly fulfilled the required amount of money in the eWallet by putting more money into the eWallet.\n";}
                     cin >> no_menu;
-                    if (no_menu!=0 ||no_menu!= -1) //if user want to buy but does not have enough money
+                    if (no_menu!=0 && no_menu!= -1) //if user want to buy but does not have enough money
                     {
 
                         if(n_balance>=0)   {no_menu=4;system("CLS");}
@@ -153,15 +155,15 @@ while (1==1)
                                 cout<< "You are on your way back to main menu to deposit more money. \nPress \' 1 \' and press \' enter \' after reach main menu.\n";cin.clear(); cin.ignore(); cin.get();}
                     }
                     else if(no_menu==0) {string item; double price;double n_balance;} //reset the value
+
                     }
                     }
 
         if(no_menu == 4)
             {
-
                             n_balance = eWallet - price; // calculate
-                            n_balance= (round(n_balance * 20))/20;
-                            if (n_balance >0)
+                            n_balance = (round(n_balance * 20))/20;
+                            if (n_balance > 0 && price >0 )
                             {
                                 int c_balance = n_balance *100;
                                 int note_50=0;
@@ -235,7 +237,7 @@ while (1==1)
 
 
                             }
-                            else if (n_balance ==0)
+                            else if (n_balance ==0 && price > 0)
                             {
                                 cout << "Your balance after paying = "<<n_balance<<endl;
                                 cout << "So you no need your change already. I don't need to calculate the whole thing. Thank God."<< endl;
@@ -243,38 +245,77 @@ while (1==1)
                             else
                                 {
                                     cout << "Oh not! You does not have the enough money to buy thing. Please proceed to menu 1 to deposit more money."<<endl;
-                                    cout << "You may retry to buy the same thing due to the prices are random. Ha ha!";
+                                    cout << "You may retry to buy the same thing due to the prices are random. Ha ha! \n";
+                                    cin.clear();cin.ignore();
+                                    cin.get();
                                 }
-                             if (n_balance >=0)
+                             if (n_balance >=0 && price > 0)
                              {
                                  cout << endl << "Press \' 1 \' and \' enter \' to proceed the buying process."<<endl;
-                                 cout << "Press \' 2 \' and \' enter \' to see the price of item and the balance in other currency.";
-                                 cout << "Press enter only will bring you back to main menu."
-                             }
-                            cin.clear();cin.ignore();
+                                 cout << "Press \' 2 \' and \' enter \' to see the price of item and the balance in other currency."<<endl;
+                                 cout << "Press other than that two keys and \'enter\' only will bring you back to main menu."<<endl;
+                                 cin.clear();cin.ignore();
                             cin  >>  no_menu;
-                            if (no_menu = 1){no_menu=7;}
-                            else if (no_menu=2){no_menu=5;}
+                            if (no_menu == 1){no_menu=7;system("cls");}
+                            else if (no_menu==2){no_menu=5;system("cls");}
+                             }
+
                         }
 
+        if(no_menu == 5)
+            {
+                if (eWallet>0)
+                {
+                    if (price > 0)
+                    {
+                        cout << "Which currency do you looking for?"<<endl;
+                        cout << "Press 1 for Japanese Yen\n";
+                        cout << "Press 2 for Chinese Yuan Renminbi.";
+                        cin.clear();cin.ignore();
+                        cin >> no_menu;
+                        if (no_menu==1){
+                            cout << "The exhange rate for Japanese Yen today is RM 1 = ¥" <<yen<< endl;
+                            cout << "The price of "<< item <<  "in Malaysian Ringgit is RM "<< price << "while in Japanese Yen is ¥"<<price * yen<< ". \n";
+                            cout << "The balance in Malaysian Ringgit is RM" << n_balance << "while in Japanese Yen is ¥" << n_balance*yen<<".  \n";
+                     }
+                     else if (no_menu==2)
+                     {
+                            cout << "The exhange rate for Chinese Yuan Reminbi today is RM 1 = ¥" <<yen<< endl;
+                            cout << "The price of "<< item <<  "in Malaysian Ringgit is RM "<< price << "while in Chinese Yuan Reminbi is ¥"<<price * yen<< ". \n";
+                            cout << "The balance in Malaysian Ringgit is RM" << n_balance << "while in Chinese Yuan Reminbi is ¥" << n_balance*yen<<".  \n";
+                     }
+                    else {cout << "You are not yet buying thing. Go and buy some stuff.";}
+                    cin.clear();cin.ignore();
+                    cin.get();
+                }
+                else {cout << "You are not yet depositing money into me. Go and deposit some money. ";}
+            }
+            }
 
-        if(no_menu ==6)
+        if(no_menu == 6)
             {
             cout << "Thank you for using the Intelligent Vending Machine.\n";
-            cout << "See you in the next transaction.\n";
+            cout << "See you in next time.\n";
             cout << "Have a nice day!\n";
             entered=false;}
 
-         if(no_menu==7)
+         if(no_menu == 7)
+            {
+                do
             {
 
-                cout << "Please enter your pin number.\n";
-                cin.clear(); cin.ignore();
-                cin >> buff_passS;
-                buff_pass=stoi(buff_passS);
-                system("cls");
-                entered=true;
-            int sec_code=0;                       //declare and reset the thing.
+            cout << "Please enter your pin number ";
+            if (price > 0)
+            {cout <<"to ensure that you are really wanted to buy and ensure that it is the right person make the purchase.\n";}
+            else
+            {cout << ".\n";}
+            cin.clear(); cin.ignore();
+            cin >> buff_passS;
+            buff_pass = stoi(buff_passS);
+            if  (entered == false) {entered=true;pass=buff_pass;}
+            system("cls");
+           if (buff_pass==pass)
+            {int sec_code=0;                       //declare and reset the thing.
             int buff=0;
             int buff2=0;
             for (int x=0;x<=3;x++)
@@ -288,10 +329,22 @@ while (1==1)
 
 
             cout << "Below is your secret code for your account. \nPlease make sure it is the right secure code to avoid scamming and fishing. \n";
-            cout <<"Your secret code is "<< sec_code;
-
+            cout <<"Your secret code is "<< sec_code<<endl;
+            if (price>0)
+            {
+            eWallet=n_balance;
+            double price=0;double n_balance=0;
+            cout << "Thanks you for buying things using me.\n";
+            cout<< "Here are you change.";
+            no_menu = 7;
+            }
             cin.clear();cin.ignore();
-            cin.get();}
+            cin.get();
+            }
+            else {cout << "Wrong pin number. \nPlease type in the right pin number.\n" ;}
+
+            }while (pass != buff_pass);
+            }
 
 
 
