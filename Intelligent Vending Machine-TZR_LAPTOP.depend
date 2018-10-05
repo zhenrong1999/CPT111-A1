@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1538658242 source:c:\users\user\onedrive - universiti sains malaysia\programming\intelligent vending machine\main.cpp
+	<iostream>
+	<ctime>
+	<string>
+	<cstdlib>
+	<iomanip>
+
